@@ -112,4 +112,5 @@ Eklenecek
 
 
 ## Sprint 1 
-Eklenecek
+- Ekran görünüsü eklenecek
+- Backlog: [Miro](https://miro.com/app/board/uXjVIij4-q4=/?share_link_id=114552763711)
