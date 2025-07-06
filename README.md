@@ -103,14 +103,37 @@ Ve sonunda... her şeyin ardında bekleyen, göz ardı edilemeyecek bir gerçek 
 
 ---
 
-### Pazarlama Planı  
-Eklenecek  
+## Sprint 1  
+- **Backlog:** [Miro](https://miro.com/app/board/uXjVIij4-q4=/?share_link_id=114552763711)  
+- **Sprint Notları:**  Sprint Notları, daily scrumlar ile Notiona kaydedilip durum sonucu görevi alan kişi ile konuşulmuştur.
+- **Sprint içinde tamamlanması tahmin edilen puan:** 60 Puan  
+- **Puan tamamlama mantığı:** Proje boyunca tamamlanması gereken toplam 200 puanlık backlog bulunmaktadır. Puanlar üç sprinte bölünüp sprint puanları 60-70-70 olacak şekilde belirlenmiştir. İlk sprint, sınav haftası vb. durumlar düşünülerek ağırlığı diğer sprintlere verecek şekilde daha düşük puanlı olarak planlanmıştır.  
+- **Backlog düzeni ve Story seçimleri:** Backlog’umuz bir sonraki sprintlerin temelini atacak şekilde düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde görevler dağıtılmıştır. Miro Board’da görünen pembe etiketler sanat, mavi etiketler organizasyon, yeşil etiketler yazılım, mor etiketler ise tasarımı temsil etmektedir.  
+- **Daily Scrum:** Daily Scrum toplantılarımız Slack üzerinden sesli, WhatsApp üzerinden ise yazılı olarak yapılmakta ve takibi sağlanmaktadır. Raporlar Notion üzerinde tutulmaktadır.  
+  👉 [Daily Scrum Bağlantısı](https://www.notion.so/22547d99163980b2b721f96411cd3c6f?v=22547d99163980a6a12c000ca6ba9577&source=copy_link)  
+
+### Sprint Board Update  
+**Sprint board screenshot:**  
+*(İlk ekran görüntüsü sürecin devam ettiği andan, ikinci ekran görüntüsü sprint sonunda alınmıştır)*  
+
+<p align="center">
+  <img src="https://i.imgur.com/WBxXNAb.png" alt="Ekran-g-r-nt-s-2025-07-06-230213"/>
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/AHHTwbu.png"/>
+</p>
 
 ---
 
-### [Product Backlog Bağlantısı](https://www.notion.so/22547d99163980b2b721f96411cd3c6f?v=22547d99163980a6a12c000ca6ba9577&source=copy_link)
+### Sprint Review  
+Bütün ekip, projede hangi kısımların tamamlandığını ve bu konular hakkındaki görüşlerini iletti. Oyunun hikaye kısmının oyuncuya nasıl sunulacağı hakkında tartışıldı. Ses ve video montajı üzerine neler yapabileceğimiz ve hangi teknolojilerin mevcut olduğu gözden geçirildi.
 
+**Sprint Review Katılımcıları:**  
+Ahmet Emir Coşkun, Hazal Türkmen, Kübra Korkmaz, Selçuk Seymen Bayhan.
 
-## Sprint 1 
-- Ekran görünüsü eklenecek
-- Backlog: [Miro](https://miro.com/app/board/uXjVIij4-q4=/?share_link_id=114552763711)
+---
+
+### Sprint Retrospective  
+Sprint 1’e kadar yazılması gereken obje hikayelerinin daha detaylı olması gerektiği kararı alındı ve Sprint 2’ye kadar tekrar yazılması, anlatım tekniğinin güçlendirilmesi planlandı. Oyunun bulmaca türleri konuşuldu; bulmacalar "koridor bulmacaları" ve "kapı bulmacaları" olarak iki gruba ayrıldı. Bölüm ilerledikçe bulmacaların yoğunluğunun artabileceğine karar verildi. Hikaye anlatımı karikatürlerle sağlanacağı için, tasarımların nasıl olması gerektiği ve hangi tekniklerin daha uygun olacağı tartışıldı. Labirent tasarımları tekrar gözden geçirildi.
+"""
+
