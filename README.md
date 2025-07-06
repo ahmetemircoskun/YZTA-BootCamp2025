@@ -15,7 +15,7 @@
     <tr >
       <td>1</td>
       <td>Ahmet Emir Coşkun</td>
-      <td>Product Owner / Geliştrici</td>
+      <td>Product Owner / Geliştirici</td>
       <td><a href="https://www.linkedin.com/in/ahmetemircoskun" target="_blank">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="20" height="20">
   </a></td>
@@ -23,7 +23,7 @@
     <tr>
       <td>2</td>
       <td>Hazal Türkmen</td>
-      <td>Oyun Tasarımcısı / Geliştrici</td>
+      <td>Oyun Tasarımcısı / Geliştirici</td>
       <td><a href="https://www.linkedin.com/in/hazal-t%C3%BCrkmen-21754933a/" target="_blank">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="20" height="20">
   </a></td>
@@ -31,7 +31,7 @@
     <tr>
       <td>3</td>
       <td>Kübra Korkmaz</td>
-      <td>Scrum Master / Geliştrici</td>
+      <td>Scrum Master / Geliştirici</td>
       <td><a href="https://www.linkedin.com/in/korkmazkubraa/" target="_blank">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="20" height="20">
   </a></td>
@@ -47,7 +47,7 @@
     <tr>
       <td>5</td>
       <td>Selçuk Seymen Bayhan</td>
-      <td>Geliştrici</td>
+      <td>Geliştirici</td>
       <td><a href="https://www.linkedin.com/in/selcukseymen0" target="_blank">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="20" height="20">
   </a></td>
