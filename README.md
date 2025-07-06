@@ -124,6 +124,8 @@ Ve sonunda... her şeyin ardında bekleyen, göz ardı edilemeyecek bir gerçek 
 </p>
 
 ---
+### Ürün Görüntüleri
+[Bağlantı](https://imgur.com/a/tikjYr9)  
 
 ### Sprint Review  
 Bütün ekip, projede hangi kısımların tamamlandığını ve bu konular hakkındaki görüşlerini iletti. Oyunun hikaye kısmının oyuncuya nasıl sunulacağı hakkında tartışıldı. Ses ve video montajı üzerine neler yapabileceğimiz ve hangi teknolojilerin mevcut olduğu gözden geçirildi.
