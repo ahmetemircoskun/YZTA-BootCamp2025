@@ -124,7 +124,7 @@ Ve sonunda... her şeyin ardında bekleyen, göz ardı edilemeyecek bir gerçek 
 </p>
 
 ---
-### Ürün Görüntüleri
+### Ürün Görüntüleri I
 [Bağlantı](https://imgur.com/a/tikjYr9)  
 
 ### Sprint Review  
@@ -152,11 +152,18 @@ Sprint 1’e kadar yazılması gereken obje hikayelerinin daha detaylı olması 
 ### Sprint Board Update  
 **Sprint board screenshot:**  
 *(İlk ekran görüntüsü sürecin devam ettiği andan, ikinci ekran görüntüsü sprint sonunda alınmıştır)*  
-Eklenecek
+<p align="center">
+  <img src="https://www.imghippo.com/i/AEr9190B.png" alt=""/>
+</p>
+<p align="center">
+  <img src="https://www.imghippo.com/i/xCpb6667Ms.png"/>
+</p>
+
 
 ---
-### Ürün Görüntüleri
-Eklenecek
+### Ürün Görüntüleri II
+[Bağlantı](https://imgur.com/a/XX3P1Tx) 
+
 
 ### Sprint Review  
 Sprint 2'ye kadar yerine getirilen görevlerin uygunluğu tartışıldı ve yazılan kod mekaniklerine, labirent tasarımlarına, hikaye örügüsne ve hikayelere çizilen çizimlere üyeler tarafından onay verildi.
