@@ -159,7 +159,7 @@ Eklenecek
 Eklenecek
 
 ### Sprint Review  
-Sprint 2'ye kadar yerinegetirilen görevlerin uygunluğu tartışıldı ve yazılan kod mekaniklerine, labirent tasarımlarına, hikaye örügüsne ve hikayelere çizilen çizimlere üyeler tarafından onay verildi.
+Sprint 2'ye kadar yerine getirilen görevlerin uygunluğu tartışıldı ve yazılan kod mekaniklerine, labirent tasarımlarına, hikaye örügüsne ve hikayelere çizilen çizimlere üyeler tarafından onay verildi.
 Ürünün nasıl daha iyi geliştirilebileceği tartışılarak Product Backlog'ta gereken güncellemeler yapıldı. Bu güncellemede "hayalet NPC'lerin hareket mekaniklerinin yazılması" ve daha iyi hikaye sunumu için "hikayelerin videolaştırlması" görevleri eklendi. Ayrıca, bulmacaların oyuncuya sunulurken ne türden assetlerin bulmacalara giydirilmesi gerektiği seçimi yapıldı.
 
 **Sprint Review Katılımcıları:**  
@@ -168,6 +168,6 @@ Ahmet Emir Coşkun, Hazal Türkmen, Kübra Korkmaz, Mina Güneyhan, Selçuk Seym
 ---
 
 ### Sprint Retrospective  
-Ahmet Emir'in bilgisayarındaki teknik problem nedeni ile bir Backlog'umuz gelecek Sprint'e sarktı. Ayrıca bazı üyelerin bu haftaki yoğunluğu ile görüşmeler sarktı ve etkin şekilde gerçekleştirilemedi. Bu nedenlerden ötürü Sprint 3'e kadar  takım içi performans arttırılması kararı alındı. 
+Bir üyemizin bilgisayarındaki teknik problem nedeni ile bir Backlog'umuz gelecek Sprint'e sarktı. Ayrıca bazı üyelerin bu haftaki yoğunluğu ile görüşmeler de sarktı veya etkin şekilde gerçekleştirilemedi. Bu nedenlerden ötürü Sprint 3'e kadar takım içi performans arttırılması kararı alındı. 
 
 
