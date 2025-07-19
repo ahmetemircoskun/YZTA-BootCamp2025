@@ -137,5 +137,37 @@ Ahmet Emir Coşkun, Hazal Türkmen, Kübra Korkmaz, Selçuk Seymen Bayhan.
 
 ### Sprint Retrospective  
 Sprint 1’e kadar yazılması gereken obje hikayelerinin daha detaylı olması gerektiği kararı alındı ve Sprint 2’ye kadar tekrar yazılması, anlatım tekniğinin güçlendirilmesi planlandı. Oyunun bulmaca türleri konuşuldu; bulmacalar "koridor bulmacaları" ve "kapı bulmacaları" olarak iki gruba ayrıldı. Bölüm ilerledikçe bulmacaların yoğunluğunun artabileceğine karar verildi. Hikaye anlatımı karikatürlerle sağlanacağı için, tasarımların nasıl olması gerektiği ve hangi tekniklerin daha uygun olacağı tartışıldı. Labirent tasarımları tekrar gözden geçirildi.
-"""
+
+---
+
+## Sprint 2  
+- **Backlog:** [Miro](https://miro.com/app/board/uXjVIij4-q4=/?share_link_id=114552763711)  
+- **Sprint Notları:**  Sprint Notları, daily scrumlar ile Notiona kaydedilip durum sonucu görevi alan kişi ile konuşulmuştur. Ayrıca backlogların detaylarına kişi Miro'da kendisine atanan göreve tıkladığında görebilmektedir.
+- **Sprint içinde tamamlanması tahmin edilen puan:** 70 Puan, tamamlanan puan 62. 8 puanlık bir backlog teknik aksaklık nedeni ile yetişmedi.  
+- **Puan tamamlama mantığı:** Proje boyunca tamamlanması gereken toplam 200 puanlık backlog bulunmaktadır. Puanlar üç sprinte bölünüp sprint puanları 60-70-70 olacak şekilde belirlenmiştir. İlk sprint, sınav haftası vb. durumlar düşünülerek ağırlığı diğer sprintlere verecek şekilde daha düşük puanlı olarak planlanmıştır.  
+- **Backlog düzeni ve Story seçimleri:** Backlog’umuz bir sonraki sprintlerin temelini atacak şekilde düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde görevler dağıtılmıştır. Miro Board’da görünen pembe etiketler sanat, mavi etiketler organizasyon, yeşil etiketler yazılım, mor etiketler ise tasarımı temsil etmektedir.  
+- **Daily Scrum:** Daily Scrum toplantılarımız Slack üzerinden sesli, WhatsApp üzerinden ise yazılı olarak yapılmakta ve takibi sağlanmaktadır. Raporlar Notion üzerinde tutulmaktadır.  
+  👉 [Daily Scrum Bağlantısı](https://www.notion.so/22547d99163980b2b721f96411cd3c6f?v=22547d99163980a6a12c000ca6ba9577&source=copy_link)  
+
+### Sprint Board Update  
+**Sprint board screenshot:**  
+*(İlk ekran görüntüsü sürecin devam ettiği andan, ikinci ekran görüntüsü sprint sonunda alınmıştır)*  
+Eklenecek
+
+---
+### Ürün Görüntüleri
+Eklenecek
+
+### Sprint Review  
+Sprint 2'ye kadar yerinegetirilen görevlerin uygunluğu tartışıldı ve yazılan kod mekaniklerine, labirent tasarımlarına, hikaye örügüsne ve hikayelere çizilen çizimlere üyeler tarafından onay verildi.
+Ürünün nasıl daha iyi geliştirilebileceği tartışılarak Product Backlog'ta gereken güncellemeler yapıldı. Bu güncellemede "hayalet NPC'lerin hareket mekaniklerinin yazılması" ve daha iyi hikaye sunumu için "hikayelerin videolaştırlması" görevleri eklendi. Ayrıca, bulmacaların oyuncuya sunulurken ne türden assetlerin bulmacalara giydirilmesi gerektiği seçimi yapıldı.
+
+**Sprint Review Katılımcıları:**  
+Ahmet Emir Coşkun, Hazal Türkmen, Kübra Korkmaz, Mina Güneyhan, Selçuk Seymen Bayhan.
+
+---
+
+### Sprint Retrospective  
+Ahmet Emir'in bilgisayarındaki teknik problem nedeni ile bir Backlog'umuz gelecek Sprint'e sarktı. Ayrıca bazı üyelerin bu haftaki yoğunluğu ile görüşmeler sarktı ve etkin şekilde gerçekleştirilemedi. Bu nedenlerden ötürü Sprint 3'e kadar  takım içi performans arttırılması kararı alındı. 
+
 
