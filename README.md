@@ -153,10 +153,10 @@ Sprint 1’e kadar yazılması gereken obje hikayelerinin daha detaylı olması 
 **Sprint board screenshot:**  
 *(İlk ekran görüntüsü sürecin devam ettiği andan, ikinci ekran görüntüsü sprint sonunda alınmıştır)*  
 <p align="center">
-  <img src="https://i.imghippo.com/files/AEr9190B.png" alt=""/>
+  <img src="https://i.imghippo.com/files/SUe5181UkE.jpeg" alt=""/>
 </p>
 <p align="center">
-  <img src="https://i.imghippo.com/files/xCpb6667Ms.png"/>
+  <img src="https://i.imghippo.com/files/xcm5343oh.jpeg"/>
 </p>
 
 
