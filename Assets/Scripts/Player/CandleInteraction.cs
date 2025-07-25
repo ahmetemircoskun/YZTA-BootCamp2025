@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerInteraction : MonoBehaviour
+public class CandleInteraction : MonoBehaviour
 {
     public float interactDistance = 3f;
     public Camera playerCamera; // FPS kamerayý buraya Inspector’dan atamalýsýn

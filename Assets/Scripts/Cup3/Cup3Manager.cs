@@ -20,7 +20,12 @@ public class Cup3Manager : MonoBehaviour
 
     private List<Transform> cups = new List<Transform>();
 
-    private void Start()
+    private Transform correctCup;
+    private bool canSelect = false;
+
+    private bool gameStarted = false;
+
+    void Start()
     {
         cup1StartPos = cup1.position;
         cup1UpPos = cup1StartPos + Vector3.up * 1f;
@@ -32,15 +37,18 @@ public class Cup3Manager : MonoBehaviour
         cups.Add(cup1);
         cups.Add(cup2);
 
+        correctCup = cup1;
+
         StartCoroutine(StartGameSequence());
     }
 
     IEnumerator StartGameSequence()
     {
+        canSelect = false;
+
         float duration = 1f;
         float elapsed = 0f;
 
-        // Cup1 yukarı kaldır
         while (elapsed < duration)
         {
             cup1.position = Vector3.Lerp(cup1StartPos, cup1UpPos, elapsed / duration);
@@ -49,7 +57,6 @@ public class Cup3Manager : MonoBehaviour
         }
         cup1.position = cup1UpPos;
 
-        // Top cup1'in altına Z ekseninde hareket ediyor
         elapsed = 0f;
         while (elapsed < duration)
         {
@@ -60,7 +67,6 @@ public class Cup3Manager : MonoBehaviour
         }
         ballRb.MovePosition(ballTargetPos);
 
-        // Cup1 aşağı iniyor
         elapsed = 0f;
         while (elapsed < duration)
         {
@@ -70,51 +76,42 @@ public class Cup3Manager : MonoBehaviour
         }
         cup1.position = cup1StartPos;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
-        // Topun pozisyonunu bardak altına ayarla ve parent yap
         ballRb.transform.position = cup1.position + new Vector3(0, -0.4f, 0);
         ballRb.transform.SetParent(cup1, true);
 
-        // Shuffle başlıyor
         yield return ShuffleCups();
 
-        Debug.Log("Shuffle tamamlandı. Oyuncu seçim yapabilir.");
-    }
-
-    Vector3 CircleArc(Vector3 center, float radius, float angle, float y)
-    {
-        float x = center.x + radius * Mathf.Cos(angle);
-        float z = center.z + radius * Mathf.Sin(angle);
-        return new Vector3(x, y, z);
+        Debug.Log("Karıştırma tamamlandı, seçebilirsiniz.");
+        canSelect = true;
+        gameStarted = true;
     }
 
     IEnumerator ShuffleCups()
     {
+        canSelect = false;
+
         for (int i = 0; i < shuffleCount; i++)
         {
-            int a = Random.Range(0, 3);
+            int a = Random.Range(0, cups.Count);
             int b;
-            do { b = Random.Range(0, 3); } while (b == a);
+            do { b = Random.Range(0, cups.Count); } while (b == a);
 
             Vector3 posA = cups[a].position;
             Vector3 posB = cups[b].position;
 
             Vector3 center = (posA + posB) / 2f;
             float radius = Vector3.Distance(posA, posB) / 2f;
-            float y = posA.y; 
+            float y = posA.y;
 
-            // Başlangıç açılarını hesapla
             float startAngleA = Mathf.Atan2(posA.z - center.z, posA.x - center.x);
             float startAngleB = Mathf.Atan2(posB.z - center.z, posB.x - center.x);
-
-            // Burada biri pozitif yönde, diğeri negatif yönde dönecek
 
             float elapsed = 0f;
             while (elapsed < shuffleDuration)
             {
                 float t = elapsed / shuffleDuration;
-
                 float angleA = Mathf.LerpAngle(startAngleA * Mathf.Rad2Deg, (startAngleA * Mathf.Rad2Deg) + 180f, t) * Mathf.Deg2Rad;
                 float angleB = Mathf.LerpAngle(startAngleB * Mathf.Rad2Deg, (startAngleB * Mathf.Rad2Deg) - 180f, t) * Mathf.Deg2Rad;
 
@@ -134,5 +131,86 @@ public class Cup3Manager : MonoBehaviour
 
             yield return new WaitForSeconds(0.1f);
         }
+
+        correctCup = ballRb.transform.parent;
+
+        canSelect = true;
+    }
+
+    Vector3 CircleArc(Vector3 center, float radius, float angle, float y)
+    {
+        float x = center.x + radius * Mathf.Cos(angle);
+        float z = center.z + radius * Mathf.Sin(angle);
+        return new Vector3(x, y, z);
+    }
+
+    void Update()
+    {
+        if (!canSelect || !gameStarted) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, 10f))
+            {
+                Transform clickedCup = hit.transform;
+
+                int index = cups.IndexOf(clickedCup);
+                if (index != -1)
+                {
+                    PlayerSelectCup(index);
+                }
+            }
+        }
+    }
+
+    public void PlayerSelectCup(int selectedCupIndex)
+    {
+        if (!canSelect)
+        {
+            Debug.Log("Seçim yapamazsın, bardaklar karışıyor.");
+            return;
+        }
+
+        canSelect = false;
+
+        if (cups[selectedCupIndex] == correctCup)
+        {
+            Debug.Log("Tebrikler! Doğru bardağı seçtin.");
+
+            // Topun parentlığını kaldır
+            ballRb.transform.SetParent(null);
+
+            StartCoroutine(LiftCorrectCup(cups[selectedCupIndex]));
+        }
+        else
+        {
+            Debug.Log("Yanlış seçim! Karıştırmaya tekrar başlıyorum...");
+            StartCoroutine(RestartShuffle());
+        }
+    }
+
+    IEnumerator LiftCorrectCup(Transform cup)
+    {
+        float duration = 1f;
+        Vector3 startPos = cup.position;
+        Vector3 upPos = startPos + Vector3.up * 1f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            cup.position = Vector3.Lerp(startPos, upPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        cup.position = upPos;
+    }
+
+    IEnumerator RestartShuffle()
+    {
+        yield return new WaitForSeconds(1f);
+        yield return ShuffleCups();
+        Debug.Log("Karıştırma tamamlandı. Tekrar seçim yapabilirsin.");
+        canSelect = true;
     }
 }
