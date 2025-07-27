@@ -1,0 +1,35 @@
+# === TEXTURES ===
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.tga filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+# === ANIMATIONS & CONTROLLERS ===
+*.anim filter=lfs diff=lfs merge=lfs -text
+*.controller filter=lfs diff=lfs merge=lfs -text
+*.overrideController filter=lfs diff=lfs merge=lfs -text
+*.timeline filter=lfs diff=lfs merge=lfs -text
+# === AUDIO & VIDEO ===
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.ogg filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+# === MODELS ===
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.obj filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+# === UNITY SCENES / PREFABS ===
+*.prefab filter=lfs diff=lfs merge=lfs -text
+*.unity filter=lfs diff=lfs merge=lfs -text
+*.mat filter=lfs diff=lfs merge=lfs -text
+# === SHADERS & MATERIALS ===
+*.shader filter=lfs diff=lfs merge=lfs -text
+*.cginc filter=lfs diff=lfs merge=lfs -text
+*.compute filter=lfs diff=lfs merge=lfs -text
+# === SPRITE ATLASES / TEXTURES ===
+*.atlas filter=lfs diff=lfs merge=lfs -text
+# === SCRIPTABLE OBJECTS / DATA ===
+*.asset filter=lfs diff=lfs merge=lfs -text
+# === UNITY META FILES ===
+*.meta merge=union
+* text=auto
