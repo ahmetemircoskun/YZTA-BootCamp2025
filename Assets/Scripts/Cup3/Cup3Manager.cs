@@ -22,7 +22,6 @@ public class Cup3Manager : MonoBehaviour
 
     private Transform correctCup;
     private bool canSelect = false;
-
     private bool gameStarted = false;
 
     void Start()
@@ -49,6 +48,7 @@ public class Cup3Manager : MonoBehaviour
         float duration = 1f;
         float elapsed = 0f;
 
+        // cup1 yukarı kaldır
         while (elapsed < duration)
         {
             cup1.position = Vector3.Lerp(cup1StartPos, cup1UpPos, elapsed / duration);
@@ -57,6 +57,7 @@ public class Cup3Manager : MonoBehaviour
         }
         cup1.position = cup1UpPos;
 
+        // Top cup1'in altına hareket ediyor
         elapsed = 0f;
         while (elapsed < duration)
         {
@@ -67,6 +68,7 @@ public class Cup3Manager : MonoBehaviour
         }
         ballRb.MovePosition(ballTargetPos);
 
+        // cup1 aşağı iniyor
         elapsed = 0f;
         while (elapsed < duration)
         {
@@ -78,12 +80,13 @@ public class Cup3Manager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        ballRb.transform.position = cup1.position + new Vector3(0, -0.4f, 0);
+        // topun pozisyonu cup1 altında, parent yap
+        ballRb.transform.position = cup1.position + new Vector3(0, -1.12f, 0);
         ballRb.transform.SetParent(cup1, true);
 
         yield return ShuffleCups();
 
-        Debug.Log("Karıştırma tamamlandı, seçebilirsiniz.");
+        Debug.Log("Karıştırma tamamlandı.");
         canSelect = true;
         gameStarted = true;
     }
@@ -112,6 +115,7 @@ public class Cup3Manager : MonoBehaviour
             while (elapsed < shuffleDuration)
             {
                 float t = elapsed / shuffleDuration;
+
                 float angleA = Mathf.LerpAngle(startAngleA * Mathf.Rad2Deg, (startAngleA * Mathf.Rad2Deg) + 180f, t) * Mathf.Deg2Rad;
                 float angleB = Mathf.LerpAngle(startAngleB * Mathf.Rad2Deg, (startAngleB * Mathf.Rad2Deg) - 180f, t) * Mathf.Deg2Rad;
 
@@ -178,14 +182,14 @@ public class Cup3Manager : MonoBehaviour
         {
             Debug.Log("Tebrikler! Doğru bardağı seçtin.");
 
-            // Topun parentlığını kaldır
+            // Top parentlıktan çıkar
             ballRb.transform.SetParent(null);
 
             StartCoroutine(LiftCorrectCup(cups[selectedCupIndex]));
         }
         else
         {
-            Debug.Log("Yanlış seçim! Karıştırmaya tekrar başlıyorum...");
+            Debug.Log("Yanlış seçim! Doğru bardak gösteriliyor...");
             StartCoroutine(RestartShuffle());
         }
     }
@@ -208,8 +212,38 @@ public class Cup3Manager : MonoBehaviour
 
     IEnumerator RestartShuffle()
     {
+        // Topun bulunduğu bardağı belirle
+        correctCup = ballRb.transform.parent;
+
+        // Topu bardaktan ayır
+        ballRb.transform.SetParent(null);
+
+        // Bardak yukarı kalksın
+        yield return LiftCorrectCup(correctCup);
+
         yield return new WaitForSeconds(1f);
+
+        // Bardak tekrar aşağı insin
+        Vector3 startPos = correctCup.position;
+        Vector3 downPos = startPos - Vector3.up * 1f;
+        float duration = 1f;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            correctCup.position = Vector3.Lerp(startPos, downPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        correctCup.position = downPos;
+
+        // Topu tekrar bardağın altına koy
+        ballRb.transform.position = correctCup.position + new Vector3(0, -1.12f, 0);
+        ballRb.transform.SetParent(correctCup, true);
+
+        yield return new WaitForSeconds(0.5f);
+
         yield return ShuffleCups();
+
         Debug.Log("Karıştırma tamamlandı. Tekrar seçim yapabilirsin.");
         canSelect = true;
     }
