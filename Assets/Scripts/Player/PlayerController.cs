@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
     private float pitch = 0f;
+    private Vector3 startPosition;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
+        startPosition = transform.position;
     }
 
     void Update()
@@ -41,5 +43,38 @@ public class PlayerController : MonoBehaviour
 
         cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        PlatformController platform = hit.collider.GetComponent<PlatformController>();
+        if (platform != null)
+        {
+            Vector3 hitNormal = hit.normal;
+            float dot = Vector3.Dot(hitNormal, Vector3.up);
+
+            if (dot > 0.5f)
+            {
+                platform.SetTemporarySafe(true);
+
+                if (!platform.isSafe)
+                {
+                    platform.TriggerFall();
+                }
+            }
+        }
+
+        if (hit.collider.CompareTag("Deadzone"))
+        {
+            controller.enabled = false;
+            transform.position = startPosition;
+            controller.enabled = true;
+
+            PlatformController[] allPlatforms = Object.FindObjectsByType<PlatformController>(FindObjectsSortMode.None);
+            foreach (PlatformController p in allPlatforms)
+            {
+                p.ResetPlatform();
+            }
+        }
     }
 }
