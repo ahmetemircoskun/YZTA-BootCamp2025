@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CandleInteraction : MonoBehaviour
 {
     public float interactDistance = 3f;
-    public Camera playerCamera; // FPS kamerayý buraya Inspector’dan atamalýsýn
+    public Camera playerCamera; // FPS kamerayï¿½ buraya Inspectorï¿½dan atamalï¿½sï¿½n
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Sol týk
+        if (Input.GetKeyDown(KeyCode.E)) // E
         {
             Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
