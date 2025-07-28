@@ -50,7 +50,7 @@ public class Cup4Manager : MonoBehaviour
         float duration = 1f;
         float elapsed = 0f;
 
-        // cup1 yukarı kaldır
+        // cup1 yukarÄ± kaldÄ±r
         while (elapsed < duration)
         {
             cup1.position = Vector3.Lerp(cup1StartPos, cup1UpPos, elapsed / duration);
@@ -59,7 +59,7 @@ public class Cup4Manager : MonoBehaviour
         }
         cup1.position = cup1UpPos;
 
-        // Top cup1'in altına hareket ediyor
+        // Top cup1'in altÄ±na hareket ediyor
         elapsed = 0f;
         while (elapsed < duration)
         {
@@ -70,7 +70,7 @@ public class Cup4Manager : MonoBehaviour
         }
         ballRb.MovePosition(ballTargetPos);
 
-        // cup1 aşağı iniyor
+        // cup1 aÅŸaÄŸÄ± iniyor
         elapsed = 0f;
         while (elapsed < duration)
         {
@@ -82,13 +82,13 @@ public class Cup4Manager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // topun pozisyonu cup1 altında, parent yap
-        ballRb.transform.position = cup1.position + new Vector3(0, -0.4f, 0);
+        // topun pozisyonu cup1 altÄ±nda, parent yap
+        ballRb.transform.position = cup1.position + new Vector3(0, -1.12f, 0);
         ballRb.transform.SetParent(cup1, true);
 
         yield return ShuffleCups();
 
-        Debug.Log("Karıştırma tamamlandı, seçebilirsiniz.");
+        Debug.Log("KarÄ±ÅŸtÄ±rma tamamlandÄ±.");
         canSelect = true;
         gameStarted = true;
     }
@@ -138,7 +138,6 @@ public class Cup4Manager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        // Shuffle sonunda doğru bardağı güncelle
         correctCup = ballRb.transform.parent;
 
         canSelect = true;
@@ -175,7 +174,7 @@ public class Cup4Manager : MonoBehaviour
     {
         if (!canSelect)
         {
-            Debug.Log("Seçim yapamazsın, bardaklar karışıyor.");
+            Debug.Log("SeÃ§im yapamazsÄ±n, bardaklar karÄ±ÅŸÄ±yor.");
             return;
         }
 
@@ -183,16 +182,16 @@ public class Cup4Manager : MonoBehaviour
 
         if (cups[selectedCupIndex] == correctCup)
         {
-            Debug.Log("Tebrikler! Doğru bardağı seçtin.");
+            Debug.Log("Tebrikler! DoÄŸru bardaÄŸÄ± seÃ§tin.");
 
-            // Top parentlıktan çıkar
+            // Top parentlÄ±ktan Ã§Ä±kar
             ballRb.transform.SetParent(null);
 
             StartCoroutine(LiftCorrectCup(cups[selectedCupIndex]));
         }
         else
         {
-            Debug.Log("Yanlış seçim! Karıştırmaya tekrar başlıyorum...");
+            Debug.Log("YanlÄ±ÅŸ seÃ§im! DoÄŸru bardak gÃ¶steriliyor...");
             StartCoroutine(RestartShuffle());
         }
     }
@@ -213,11 +212,43 @@ public class Cup4Manager : MonoBehaviour
         cup.position = upPos;
     }
 
-    IEnumerator RestartShuffle()
+IEnumerator RestartShuffle()
+{
+    // Topun bulunduÄŸu bardaÄŸÄ± belirle
+    correctCup = ballRb.transform.parent;
+
+    // Topu bardaktan ayÄ±r (bardak yukarÄ± kalkÄ±nca top sabit kalÄ±r)
+    ballRb.transform.SetParent(null);
+
+    // DoÄŸru bardaÄŸÄ± kaldÄ±r
+    yield return LiftCorrectCup(correctCup);
+
+    yield return new WaitForSeconds(1f);
+
+    // DoÄŸru bardaÄŸÄ± tekrar indir
+    Vector3 startPos = correctCup.position;
+    Vector3 downPos = startPos - Vector3.up * 1f;
+    float duration = 1f;
+    float elapsed = 0f;
+    while (elapsed < duration)
     {
-        yield return new WaitForSeconds(1f);
-        yield return ShuffleCups();
-        Debug.Log("Karıştırma tamamlandı. Tekrar seçim yapabilirsin.");
-        canSelect = true;
+        correctCup.position = Vector3.Lerp(startPos, downPos, elapsed / duration);
+        elapsed += Time.deltaTime;
+        yield return null;
     }
+    correctCup.position = downPos;
+
+    // Topu tekrar bardaÄŸÄ±n altÄ±na ve parent yap
+    ballRb.transform.position = correctCup.position + new Vector3(0, -1.12f, 0);
+    ballRb.transform.SetParent(correctCup, true);
+
+    yield return new WaitForSeconds(0.5f);
+
+    yield return ShuffleCups();
+
+    Debug.Log("KarÄ±ÅŸtÄ±rma tamamlandÄ±. Tekrar seÃ§im yapabilirsin.");
+    canSelect = true;
+}
+
+
 }
