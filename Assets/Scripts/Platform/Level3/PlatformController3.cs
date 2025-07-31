@@ -63,6 +63,6 @@ public class PlatformController : MonoBehaviour
         if (isTemporarilySafe)
             rend.material.color = Color.green;
         else
-            rend.material.color = Color.white; // Basic renk
+            rend.material.color = new Color32(0x6F, 0x77, 0x82, 0xFF); // #6F7782 gri-mavi
     }
 }

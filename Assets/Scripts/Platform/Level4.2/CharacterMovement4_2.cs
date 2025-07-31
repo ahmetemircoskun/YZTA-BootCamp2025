@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement4_2 : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpSpeed = 5f;
@@ -8,8 +8,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float ySpeed;
     [SerializeField] private float originalStepOffset;
 
-    private Vector3 respawnPosition3 = new Vector3(90f, 1.71f, 66.5f); // <-- Deadzone ışınlama pozisyonu
-    private Vector3 respawnPosition42 = new Vector3(110f, 1.71f, 300); // <-- Deadzone ışınlama pozisyonu
+    private Vector3 respawnPosition4_2 = new Vector3(110.54f, 2.04f, 293.073f); // <-- Deadzone ışınlama pozisyonu
+
     private float deadZoneY = -10f; // <-- Bu değeri sahnene göre ayarlayabilirsin
 
     void Start()
@@ -67,11 +67,11 @@ public class CharacterMovement : MonoBehaviour
     void Respawn()
     {
         characterController.enabled = false;
-        transform.position = respawnPosition3;
+        transform.position = respawnPosition4_2;
         characterController.enabled = true;
 
         // Platformları resetle
-        PlatformController[] platforms = FindObjectsByType<PlatformController>(FindObjectsSortMode.None);
+        PlatformController4_2[] platforms = FindObjectsByType<PlatformController4_2>(FindObjectsSortMode.None);
         foreach (var plat in platforms)
         {
             plat.ResetPlatform();
@@ -79,7 +79,7 @@ public class CharacterMovement : MonoBehaviour
     }
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        PlatformController platform = hit.collider.GetComponent<PlatformController>();
+        PlatformController4_2 platform = hit.collider.GetComponent<PlatformController4_2>();
         if (platform != null)
         {
             platform.TriggerFall();
