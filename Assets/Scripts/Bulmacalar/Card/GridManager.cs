@@ -52,7 +52,6 @@ public class GridManager : MonoBehaviour
                 int index = row * columns + col;
                 Vector3 position = new Vector3(col * spacing, 0.25f, row * spacing);
                 GameObject cardObj = Instantiate(cards[index], position, Quaternion.identity, cardParent);
-
             }
         }
     }
@@ -87,10 +86,13 @@ public class GridManager : MonoBehaviour
             selectedCards[1].GetCardType() == Card.CardType.B)
         {
             Debug.Log("Kazandın!");
+            CardSoundsManager.Instance.PlayMatchSound();    // DOĞRU SES
+            Card.CheckSolutionStatic();                    // DOĞRU FONKSİYON
         }
         else
         {
             Debug.Log("Yanlış eşleşme.");
+            CardSoundsManager.Instance.PlayMismatchSound(); // YANLIŞ SES
             selectedCards[0].Hide();
             selectedCards[1].Hide();
         }

@@ -24,8 +24,21 @@ public class Cup3Manager : MonoBehaviour
     private bool canSelect = false;
     private bool gameStarted = false;
 
+    public AudioClip puzzleSolvedSound;
+    public AudioClip wrongSound;
+    private AudioSource audioSource;
+
+    [Range(0, 1)]
+    public float solvedVolume = 1f;
+    [Range(0, 1)]
+    public float wrongVolume = 1f;
+
     void Start()
     {
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+
         cup1StartPos = cup1.position;
         cup1UpPos = cup1StartPos + Vector3.up * 1f;
 
@@ -182,7 +195,6 @@ public class Cup3Manager : MonoBehaviour
         {
             Debug.Log("Tebrikler! Doğru bardağı seçtin.");
 
-
             ballRb.transform.SetParent(null);
 
             StartCoroutine(LiftCorrectCup(cups[selectedCupIndex]));
@@ -191,6 +203,7 @@ public class Cup3Manager : MonoBehaviour
         else
         {
             Debug.Log("Yanlış seçim! Doğru bardak gösteriliyor...");
+            audioSource.PlayOneShot(wrongSound, wrongVolume);
             StartCoroutine(RestartShuffle());
         }
     }
@@ -254,6 +267,11 @@ public class Cup3Manager : MonoBehaviour
         if (true)
         {
             Debug.Log("Doğru çözüldü!");
+
+            if (puzzleSolvedSound != null)
+            {
+                audioSource.PlayOneShot(puzzleSolvedSound, solvedVolume);
+            }
 
             if (PuzzleManager.Instance != null)
             {

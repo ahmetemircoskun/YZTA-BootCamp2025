@@ -14,9 +14,21 @@ public class CandleManager : MonoBehaviour
     private Quaternion openRotation;
 
     public float rotationAngleY = 90f;
-    public float rotateSpeed = 2f;  
+    public float rotateSpeed = 2f;
 
     private Coroutine doorCoroutine;
+
+    public AudioClip puzzleSolvedSound;
+    private AudioSource audioSource;
+
+    [Range(0, 1)]
+    public float solvedVolume = 1f;
+
+    void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+    }
 
     void Awake()
     {
@@ -45,7 +57,11 @@ public class CandleManager : MonoBehaviour
         }
 
         // Doğru kombinasyonsa kapıyı aç
-        if (doorCoroutine != null) StopCoroutine(doorCoroutine);
+        if (doorCoroutine != null)
+        {
+            StopCoroutine(doorCoroutine);
+        }
+        audioSource.PlayOneShot(puzzleSolvedSound, solvedVolume);
         doorCoroutine = StartCoroutine(RotateDoor(openRotation));
     }
 
