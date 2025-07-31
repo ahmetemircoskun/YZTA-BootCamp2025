@@ -22,8 +22,9 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         GenerateBoard();
-        PositionCamera();
     }
+
+    public Transform tableTransform;
 
     void GenerateBoard()
     {
@@ -44,24 +45,28 @@ public class GridManager : MonoBehaviour
             cards[rand] = temp;
         }
 
-        // Grid'e yerleştir
+        // X ve Z ekseninde ortalamak için offsetler
+        float xOffset = ((columns - 1) * spacing) / 2f;
+        float zOffset = ((rows - 1) * spacing) / 2f;
+
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < columns; col++)
             {
                 int index = row * columns + col;
-                Vector3 position = new Vector3(col * spacing, 0.25f, row * spacing);
+                Vector3 position = new Vector3(
+                    tableTransform.position.x + col * spacing - xOffset, // X ekseninde masaya göre ortalı
+                    0.25f,                                              // Y ekseni sabit, dokunmuyoruz
+                    tableTransform.position.z + row * spacing - zOffset // Z ekseninde masaya göre ortalı
+                );
                 GameObject cardObj = Instantiate(cards[index], position, Quaternion.identity, cardParent);
             }
         }
     }
 
-    void PositionCamera()
-    {
-        Vector3 center = new Vector3((columns - 1) * spacing / 2f, 10, (rows - 1) * spacing / 2f);
-        Camera.main.transform.position = center;
-        Camera.main.transform.rotation = Quaternion.Euler(90, 0, 0);
-    }
+
+
+
 
     public void CardSelected(Card card)
     {
@@ -100,4 +105,6 @@ public class GridManager : MonoBehaviour
         selectedCards.Clear();
         isProcessing = false;
     }
+
+
 }
