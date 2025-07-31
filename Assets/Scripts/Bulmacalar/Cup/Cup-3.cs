@@ -182,10 +182,11 @@ public class Cup3Manager : MonoBehaviour
         {
             Debug.Log("Tebrikler! Doğru bardağı seçtin.");
 
-            // Top parentlıktan çıkar
+
             ballRb.transform.SetParent(null);
 
             StartCoroutine(LiftCorrectCup(cups[selectedCupIndex]));
+            CheckSolution();
         }
         else
         {
@@ -246,5 +247,18 @@ public class Cup3Manager : MonoBehaviour
 
         Debug.Log("Karıştırma tamamlandı. Tekrar seçim yapabilirsin.");
         canSelect = true;
+    }
+
+    public void CheckSolution()
+    {
+        if (true)
+        {
+            Debug.Log("Doğru çözüldü!");
+
+            if (PuzzleManager.Instance != null)
+            {
+                PuzzleManager.Instance.PuzzleSolved();
+            }
+        }
     }
 }

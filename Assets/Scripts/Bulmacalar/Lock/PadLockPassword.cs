@@ -17,12 +17,26 @@ public class PadLockPassword : MonoBehaviour
         if (_moveRull._numberArray.SequenceEqual(_numberPassword))
         {
             Debug.Log("Password correct");
+            CheckSolution();
 
             for (int i = 0; i < _moveRull._rullers.Count; i++)
             {
                 var emission = _moveRull._rullers[i].GetComponent<PadLockEmissionColor>();
                 emission._isSelect = false;
                 emission.BlinkingMaterial();
+            }
+        }
+    }
+
+    public void CheckSolution()
+    {
+        if (true)
+        {
+            Debug.Log("Doğru çözüldü!");
+
+            if (PuzzleManager.Instance != null)
+            {
+                PuzzleManager.Instance.PuzzleSolved();
             }
         }
     }
