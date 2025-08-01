@@ -8,6 +8,21 @@ public class PuzzleTrigger : MonoBehaviour
 
     private bool playerNear = false;
 
+
+    void Start()
+    {
+        // Eğer kapı açıksa, collider ve prompt kapanmalı
+        if (GameStateManager.Instance != null &&
+            GameStateManager.Instance.IsDoorOpen(targetDoorId))
+        {
+            if (ePromptDisplay != null) ePromptDisplay.HidePrompt();
+            var collider = GetComponent<Collider>();
+            if (collider != null)
+                collider.enabled = false;
+            enabled = false; // Script'i de devre dışı bırakabilirsin
+        }
+    }
+
     private void Update()
     {
         if (playerNear && Input.GetKeyDown(KeyCode.E))
@@ -32,6 +47,17 @@ public class PuzzleTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // Kapı açıksa tekrar aktive olmasın
+            if (GameStateManager.Instance != null &&
+                GameStateManager.Instance.IsDoorOpen(targetDoorId))
+            {
+                if (ePromptDisplay != null) ePromptDisplay.HidePrompt();
+                var collider = GetComponent<Collider>();
+                if (collider != null)
+                    collider.enabled = false;
+                enabled = false;
+                return;
+            }
             playerNear = true;
             if (ePromptDisplay != null) ePromptDisplay.ShowPrompt();
         }
