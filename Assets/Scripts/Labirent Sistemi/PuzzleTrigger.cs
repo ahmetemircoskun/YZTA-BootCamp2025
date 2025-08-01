@@ -26,15 +26,24 @@ public class PuzzleTrigger : MonoBehaviour
         }
     }
 
+    public KeyPromptDisplay ePromptDisplay; // Inspector’dan atanacak
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             playerNear = true;
+            if (ePromptDisplay != null) ePromptDisplay.ShowPrompt();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             playerNear = false;
+            if (ePromptDisplay != null) ePromptDisplay.HidePrompt();
+        }
     }
+
 }
