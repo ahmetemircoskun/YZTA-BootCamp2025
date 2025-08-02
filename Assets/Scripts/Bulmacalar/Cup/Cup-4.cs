@@ -25,8 +25,22 @@ public class Cup4Manager : MonoBehaviour
     private bool canSelect = false;
     private bool gameStarted = false;
 
+    public AudioClip puzzleSolvedSound;
+    public AudioClip wrongSound;
+    private AudioSource audioSource;
+
+    [Range(0, 1)]
+    public float solvedVolume = 1f;
+    [Range(0, 1)]
+    public float wrongVolume = 1f;
+
+
     void Start()
     {
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+
         cup1StartPos = cup1.position;
         cup1UpPos = cup1StartPos + Vector3.up * 1f;
 
@@ -188,10 +202,12 @@ public class Cup4Manager : MonoBehaviour
             ballRb.transform.SetParent(null);
 
             StartCoroutine(LiftCorrectCup(cups[selectedCupIndex]));
+            CheckSolution();
         }
         else
         {
             Debug.Log("Yanlış seçim! Doğru bardak gösteriliyor...");
+            audioSource.PlayOneShot(wrongSound, wrongVolume);
             StartCoroutine(RestartShuffle());
         }
     }
@@ -212,43 +228,61 @@ public class Cup4Manager : MonoBehaviour
         cup.position = upPos;
     }
 
-IEnumerator RestartShuffle()
-{
-    // Topun bulunduğu bardağı belirle
-    correctCup = ballRb.transform.parent;
-
-    // Topu bardaktan ayır (bardak yukarı kalkınca top sabit kalır)
-    ballRb.transform.SetParent(null);
-
-    // Doğru bardağı kaldır
-    yield return LiftCorrectCup(correctCup);
-
-    yield return new WaitForSeconds(1f);
-
-    // Doğru bardağı tekrar indir
-    Vector3 startPos = correctCup.position;
-    Vector3 downPos = startPos - Vector3.up * 1f;
-    float duration = 1f;
-    float elapsed = 0f;
-    while (elapsed < duration)
+    IEnumerator RestartShuffle()
     {
-        correctCup.position = Vector3.Lerp(startPos, downPos, elapsed / duration);
-        elapsed += Time.deltaTime;
-        yield return null;
+        // Topun bulunduğu bardağı belirle
+        correctCup = ballRb.transform.parent;
+
+        // Topu bardaktan ayır (bardak yukarı kalkınca top sabit kalır)
+        ballRb.transform.SetParent(null);
+
+        // Doğru bardağı kaldır
+        yield return LiftCorrectCup(correctCup);
+
+        yield return new WaitForSeconds(1f);
+
+        // Doğru bardağı tekrar indir
+        Vector3 startPos = correctCup.position;
+        Vector3 downPos = startPos - Vector3.up * 1f;
+        float duration = 1f;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            correctCup.position = Vector3.Lerp(startPos, downPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        correctCup.position = downPos;
+
+        // Topu tekrar bardağın altına ve parent yap
+        ballRb.transform.position = correctCup.position + new Vector3(0, -1.12f, 0);
+        ballRb.transform.SetParent(correctCup, true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        yield return ShuffleCups();
+
+        Debug.Log("Karıştırma tamamlandı. Tekrar seçim yapabilirsin.");
+        canSelect = true;
     }
-    correctCup.position = downPos;
 
-    // Topu tekrar bardağın altına ve parent yap
-    ballRb.transform.position = correctCup.position + new Vector3(0, -1.12f, 0);
-    ballRb.transform.SetParent(correctCup, true);
+    public void CheckSolution()
+    {
+        if (true)
+        {
+            Debug.Log("Doğru çözüldü!");
 
-    yield return new WaitForSeconds(0.5f);
+            if (puzzleSolvedSound != null)
+            {
+                audioSource.PlayOneShot(puzzleSolvedSound, solvedVolume);
+            }
 
-    yield return ShuffleCups();
-
-    Debug.Log("Karıştırma tamamlandı. Tekrar seçim yapabilirsin.");
-    canSelect = true;
-}
+            if (PuzzleManager.Instance != null)
+            {
+                PuzzleManager.Instance.PuzzleSolved();
+            }
+        }
+    }
 
 
 }

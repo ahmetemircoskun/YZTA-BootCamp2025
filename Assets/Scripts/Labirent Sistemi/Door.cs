@@ -3,7 +3,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public string doorId;
-    float addYRotation = -110f; // Yalnızca mevcut Y rotasyonuna eklenecek değer
+    [SerializeField] float addYRotation = -110f; // Yalnızca mevcut Y rotasyonuna eklenecek değer
 
     private void Start()
     {
