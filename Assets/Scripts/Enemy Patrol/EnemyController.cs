@@ -1,41 +1,41 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.SceneManagement;
 public class EnemyController : MonoBehaviour
 {
-    public NavMeshAgent agent;
     public Transform player;
+    private NavMeshAgent agent;
 
-    [Header("Wander Settings")]
-    public float wanderRadius = 30f;
-    private float wanderCooldown = 2f;
-    private float wanderTimer;
-
+    [Header("Takip Ayarları")]
     public bool shouldChase = false;
+
+    [Header("Saklanma Durumunda Gezinme")]
+    public float wanderRadius = 30f;
+    public float wanderCooldown = 2f;
+    private float wanderTimer;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.isStopped = true;
         wanderTimer = 0f;
-        agent.isStopped = true; // Başlangıçta beklesin
     }
 
     void Update()
     {
-        if (shouldChase)
+        if (!shouldChase)
         {
-            if (PlayerHidingDetector.isHiding)
-            {
-                WanderWhilePlayerHidden(); // Durum 4
-            }
-            else
-            {
-                ChasePlayer(); // Durum 3
-            }
+            agent.isStopped = true;
+            return;
+        }
+
+        if (PlayerHidingDetector.isHiding)
+        {
+            WanderWhilePlayerHidden();
         }
         else
         {
-            agent.isStopped = true; // Durum 2
+            ChasePlayer();
         }
     }
 
@@ -68,8 +68,7 @@ public class EnemyController : MonoBehaviour
             Vector3 randomDirection = Random.insideUnitSphere * radius;
             randomDirection += transform.position;
 
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomDirection, out hit, 5f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, 5f, NavMesh.AllAreas))
             {
                 return hit.position;
             }
@@ -89,11 +88,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    // ✅ Yakalama burada olur
+    private void OnTriggerEnter(Collider other)
     {
-        if (shouldChase && collision.gameObject.CompareTag("Player"))
+        if (shouldChase && other.CompareTag("Player"))
         {
-            Debug.Log("Oyun Bitti");
+            Debug.Log("Oyun Bitti! Oyuncuya değildi.");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
