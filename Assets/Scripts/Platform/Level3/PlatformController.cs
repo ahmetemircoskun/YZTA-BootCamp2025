@@ -3,8 +3,7 @@ using UnityEngine;
 public class PlatformController : MonoBehaviour
 {
     public bool isSafe = false;
-
-    private bool triggered = false;
+    private bool isActivated = false;
     private bool isTemporarilySafe = false;
 
     private Rigidbody rb;
@@ -17,39 +16,55 @@ public class PlatformController : MonoBehaviour
         startPosition = transform.position;
         startRotation = transform.rotation;
         rb.isKinematic = true;
-
-        // Baþlangýçta renk basic (beyaz)
         UpdateColor();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (isSafe)
+            {
+                TriggerPlatform();
+            }
+            else
+            {
+                TriggerFall();
+            }
+        }
+    }
+
+    public void TriggerPlatform()
+    {
+        if (!isActivated)
+        {
+            isActivated = true;
+            UpdateColor();
+        }
     }
 
     public void TriggerFall()
     {
-        if (!isSafe && !triggered)
+        if (!isSafe && rb.isKinematic)
         {
-            triggered = true;
             rb.isKinematic = false;
         }
     }
 
     public void ResetPlatform()
     {
-        if (rb.isKinematic == false)
+        if (!rb.isKinematic)
         {
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
-
         rb.isKinematic = true;
-
         transform.position = startPosition;
         transform.rotation = startRotation;
-
-        triggered = false;
-
-        // Renk resetlenmesin, önceki yeþil kalsýn
         UpdateColor();
     }
 
+    // SetTemporarySafe karakter kontrolÃ¼nde bir yerde Ã§aÄŸrÄ±lÄ±yorsa kullan
     public void SetTemporarySafe(bool value)
     {
         isTemporarilySafe = value;
@@ -59,10 +74,11 @@ public class PlatformController : MonoBehaviour
     private void UpdateColor()
     {
         Renderer rend = GetComponent<Renderer>();
-
         if (isTemporarilySafe)
-            rend.material.color = Color.green;
+            rend.material.color = new Color(0.3f, 0.6f, 0.3f); // Soft yeÅŸil (geÃ§ici)
+        else if (isSafe && isActivated)
+            rend.material.color = new Color(0.3f, 0.6f, 0.3f); // Soft yeÅŸil (kalÄ±cÄ±)
         else
-            rend.material.color = new Color32(0x6F, 0x77, 0x82, 0xFF); // #6F7782 gri-mavi
+            rend.material.color = new Color32(0x6F, 0x77, 0x82, 0xFF); // gri-mavi
     }
 }

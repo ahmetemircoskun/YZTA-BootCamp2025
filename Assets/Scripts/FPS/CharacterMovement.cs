@@ -83,7 +83,17 @@ public class CharacterMovement : MonoBehaviour
         if (platform != null)
         {
             platform.TriggerFall();
-            platform.SetTemporarySafe(true);
+
+            if (platform.isSafe)
+            {
+                platform.TriggerPlatform();
+                platform.SetTemporarySafe(true);
+            }
+            else
+            {
+                platform.SetTemporarySafe(false);
+            }
         }
     }
+
 }

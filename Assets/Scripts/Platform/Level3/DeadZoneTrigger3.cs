@@ -6,7 +6,7 @@ public class DeadzoneTrigger3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ghost")) // Burayý "Ghost" yaptýk
+        if (other.CompareTag("Player")) // ArtÄ±k Player tag'i
         {
             CharacterController controller = other.GetComponent<CharacterController>();
 
@@ -16,7 +16,7 @@ public class DeadzoneTrigger3 : MonoBehaviour
                 other.transform.position = respawnPosition;
                 controller.enabled = true;
 
-                // Tüm platformlarý resetle
+                // TÃ¼m platformlarÄ± resetle
                 PlatformController[] platforms = FindObjectsByType<PlatformController>(FindObjectsSortMode.None);
                 foreach (var plat in platforms)
                 {
