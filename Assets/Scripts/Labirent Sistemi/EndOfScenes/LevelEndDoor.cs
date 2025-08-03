@@ -25,6 +25,11 @@ public class LevelEndDoor : MonoBehaviour
         // E’ye basınca sadece oyuncu kapının trigger’ındaysa ve etkileşim açıksa sahne değişsin
         if (canInteract && isPlayerNear && Input.GetKeyDown(KeyCode.E))
         {
+            // Önce Player objesini yok et (çift player veya konum bugı olmasın)
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+                Destroy(player);
+
             SceneManager.LoadScene(nextSceneName);
         }
     }
@@ -34,9 +39,6 @@ public class LevelEndDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = true;
-            // İster prompt tekrar göster, ister gösterme — sürekli açıksa burada zorunlu değil
-            // if (keyPromptDisplay != null)
-            //     keyPromptDisplay.ShowPrompt();
         }
     }
 
@@ -45,9 +47,6 @@ public class LevelEndDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
-            // İster prompt kapat, ister açık bırak
-            // if (keyPromptDisplay != null)
-            //     keyPromptDisplay.HidePrompt();
         }
     }
 }
