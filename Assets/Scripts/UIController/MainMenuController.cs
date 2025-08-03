@@ -8,7 +8,7 @@ public class MainMenuController : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Start butonuna basıldı");
-        SceneManager.LoadScene("Level-1");
+        SceneManager.LoadScene("1-Giriş Avlusu");
     }
 
     public void CloseCredits()

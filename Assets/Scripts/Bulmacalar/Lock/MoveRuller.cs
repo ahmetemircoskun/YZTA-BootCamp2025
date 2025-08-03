@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MoveRuller : MonoBehaviour
 {
+    // İki ayrı değişken tutalım
     PadLockPassword _lockPassword;
     PadLockEmissionColor _pLockColor;
 
@@ -20,7 +21,7 @@ public class MoveRuller : MonoBehaviour
 
     void Awake()
     {
-        
+        // Her iki scriptten birini bul, varsa atamasını yap
         _lockPassword = FindFirstObjectByType<PadLockPassword>();
         _pLockColor = FindFirstObjectByType<PadLockEmissionColor>();
 
@@ -39,7 +40,11 @@ public class MoveRuller : MonoBehaviour
     {
         MoveRulles();
         RotateRullers();
-        _lockPassword.Password();
+
+        // PadLockPassword varsa onu çalıştır
+        if (_lockPassword != null)
+            _lockPassword.Password();
+
     }
 
     void MoveRulles()
