@@ -66,7 +66,7 @@
   <img src="https://i.imghippo.com/files/vmIX1522Qc.jpeg" width="250" height="250" />
 </p>
 
-[YouTube Tanıtım Videosu](https://www.youtube.com/watch?v=c-loU9UKxBA)
+### 🎥[Tanıtım Videosu](https://www.youtube.com/watch?v=c-loU9UKxBA)
 
 ### Oyun Açıklaması  
 The Truth In The Mirror, gizem gerilim türünde hikaye odaklı bir bulmaca oyunudur. Oyuncular ana karakterin gözünden çevreyi keşfedip bulmacaları çözerken ana karakterin içsel dünyasına yolculuk eder. Bu süreçte onu çarpıcı gerçekler beklemektedir.
