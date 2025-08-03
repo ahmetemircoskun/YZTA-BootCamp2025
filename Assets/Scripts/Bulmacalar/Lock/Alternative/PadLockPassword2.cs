@@ -1,20 +1,19 @@
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Sahne yönetimi için
+using UnityEngine.SceneManagement;
 
 public class PadLockPassword2 : MonoBehaviour
 {
-    private MoveRuller _moveRull;
+    private MoveRuller2 _moveRull;
     private TimeBlinking _timeBlinking;
-    public AudioClip puzzleSolvedSound; // Inspector’dan atanacak ses
+    public AudioClip puzzleSolvedSound;
     private AudioSource audioSource;
 
     [Range(0, 1)]
     public float solvedVolume = 1f;
 
     public int[] _numberPassword = { 0, 0, 0, 0 };
-
-    public string nextSceneName = "NextScene"; // Inspector’dan hedef sahne adı
+    public string nextSceneName = "NextScene"; // Inspector’dan geçilecek sahne adı
 
     private bool isSolved = false;
 
@@ -26,18 +25,26 @@ public class PadLockPassword2 : MonoBehaviour
 
     private void Awake()
     {
-        _moveRull = FindFirstObjectByType<MoveRuller>();
+        _moveRull = FindFirstObjectByType<MoveRuller2>();
         _timeBlinking = FindFirstObjectByType<TimeBlinking>();
     }
 
     public void Password()
     {
-        if (isSolved) return; // Zaten çözüldüyse tekrar işlem yapma
+        if (isSolved) return;
 
         if (_moveRull._numberArray.SequenceEqual(_numberPassword))
         {
             Debug.Log("Password correct");
 
+            // Doğru şifre girildiğinde sahne geçişi:
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                Debug.Log("Sahne geçişi: " + nextSceneName);
+                SceneManager.LoadScene(nextSceneName);
+            }
+
+            // Ses ve efektler
             CheckSolution();
 
             // Emisyonları kapat
@@ -50,14 +57,8 @@ public class PadLockPassword2 : MonoBehaviour
 
             isSolved = true;
 
-            // MoveRuller ve TimeBlinking’i devre dışı bırak
-            if (_moveRull != null)
-                _moveRull.enabled = false;
-            if (_timeBlinking != null)
-                _timeBlinking.enabled = false;
-
-            // Doğru şifre girilince sahneyi değiştir
-            SceneManager.LoadScene(nextSceneName);
+            if (_moveRull != null) _moveRull.enabled = false;
+            if (_timeBlinking != null) _timeBlinking.enabled = false;
         }
     }
 
@@ -66,13 +67,6 @@ public class PadLockPassword2 : MonoBehaviour
         Debug.Log("Doğru çözüldü!");
 
         if (puzzleSolvedSound != null)
-        {
             audioSource.PlayOneShot(puzzleSolvedSound, solvedVolume);
-        }
-
-        if (PuzzleManager.Instance != null)
-        {
-            PuzzleManager.Instance.PuzzleSolved();
-        }
     }
 }

@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveRuller : MonoBehaviour
+public class MoveRuller2 : MonoBehaviour
 {
-    // İki ayrı değişken tutalım
-    PadLockPassword _lockPassword;
+    PadLockPassword2 _lockPassword2;
     PadLockEmissionColor _pLockColor;
 
     [HideInInspector]
@@ -21,8 +20,7 @@ public class MoveRuller : MonoBehaviour
 
     void Awake()
     {
-        // Her iki scriptten birini bul, varsa atamasını yap
-        _lockPassword = FindFirstObjectByType<PadLockPassword>();
+        _lockPassword2 = FindFirstObjectByType<PadLockPassword2>();
         _pLockColor = FindFirstObjectByType<PadLockEmissionColor>();
 
         _rullers.Add(GameObject.Find("Ruller1"));
@@ -41,10 +39,9 @@ public class MoveRuller : MonoBehaviour
         MoveRulles();
         RotateRullers();
 
-        // PadLockPassword varsa onu çalıştır
-        if (_lockPassword != null)
-            _lockPassword.Password();
-
+        // Sadece PadLockPassword2 varsa onu çalıştır
+        if (_lockPassword2 != null)
+            _lockPassword2.Password();
     }
 
     void MoveRulles()
