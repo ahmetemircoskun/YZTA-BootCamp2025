@@ -199,7 +199,7 @@ Ahmet Emir Coşkun, Hazal Türkmen, Kübra Korkmaz, Mina Güneyhan, Selçuk Seym
 
 ---
 
-### Ürün Görüntüleri II
+### Ürün Görüntüleri III
 [Bağlantı](https://imgur.com/a/egH41GQ) 
 
 ### Sprint Review 
