@@ -89,4 +89,15 @@ public class Card : MonoBehaviour
     {
         return isRevealed;
     }
+
+    // DOĞRU DURUMDA ÇALIŞACAK FONKSİYON:
+    public static void CheckSolutionStatic()
+    {
+        Debug.Log("Doğru çözüldü!");
+
+        if (PuzzleManager.Instance != null)
+        {
+            PuzzleManager.Instance.PuzzleSolved();
+        }
+    }
 }
