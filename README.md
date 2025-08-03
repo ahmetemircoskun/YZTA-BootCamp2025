@@ -1,5 +1,8 @@
 ## Takım İsmi: Grup 27  
-**Takım Logosu:** Karar verilmedi  
+**Takım Logosu:**  
+<p>
+  <img src="https://i.imghippo.com/files/Llm6069IQU.jpeg" width="250" height="250" />
+</p>
 
 ### Takım Üyeleri
 <table>
@@ -57,11 +60,14 @@
 
 ---
 
-## Oyun İsmi: Aynadaki Gerçek  
-**Oyun Logosu:** Karar Verilmedi  
+## Oyun İsmi: The Truth In The Mirror  
+**Oyun Logosu:** 
+<p>
+  <img src="https://i.imghippo.com/files/vmIX1522Qc.jpeg" width="250" height="250" />
+</p>
 
 ### Oyun Açıklaması  
-Aynadaki Gerçek, gizem gerilim türünde hikaye odaklı bir bulmaca oyunudur. Oyuncular ana karakterin gözünden çevreyi keşfedip bulmacaları çözerken ana karakterin içsel dünyasına yolculuk eder. Bu süreçte onu çarpıcı gerçekler beklemektedir.
+The Truth In The Mirror, gizem gerilim türünde hikaye odaklı bir bulmaca oyunudur. Oyuncular ana karakterin gözünden çevreyi keşfedip bulmacaları çözerken ana karakterin içsel dünyasına yolculuk eder. Bu süreçte onu çarpıcı gerçekler beklemektedir.
 
 ---
 
@@ -117,10 +123,10 @@ Ve sonunda... her şeyin ardında bekleyen, göz ardı edilemeyecek bir gerçek 
 *(İlk ekran görüntüsü sürecin devam ettiği andan, ikinci ekran görüntüsü sprint sonunda alınmıştır)*  
 
 <p align="center">
-  <img src="https://i.imgur.com/WBxXNAb.png" alt="Ekran-g-r-nt-s-2025-07-06-230213"/>
+  <img src="https://i.imghippo.com/files/Mg6403KU.png"/>
 </p>
 <p align="center">
-  <img src="https://i.imgur.com/AHHTwbu.png"/>
+  <img src="https://i.imghippo.com/files/Gyd5248vYg.png"/>
 </p>
 
 ---
@@ -179,8 +185,10 @@ Ahmet Emir Coşkun, Hazal Türkmen, Kübra Korkmaz, Mina Güneyhan, Selçuk Seym
 ## Sprint 3  
 - **Backlog:** [Miro](https://miro.com/app/board/uXjVIij4-q4=/?share_link_id=114552763711)  
 - **Sprint Notları:**  Sprint Notları, daily scrumlar ile Notiona kaydedilip durum sonucu görevi alan kişi ile konuşulmuştur. Ayrıca backlogların detaylarına kişi Miro'da kendisine atanan göreve tıkladığında görebilmektedir.
-- **Sprint içinde tamamlanması tahmin edilen puan:**  
-- **Puan tamamlama mantığı:** Proje boyunca tamamlanması gereken toplam 200 puanlık backlog bulunmaktadır. Puanlar üç sprinte bölünüp sprint puanları 60-70-70 olacak şekilde belirlenmiştir. İlk sprint, sınav haftası vb. durumlar düşünülerek ağırlığı diğer sprintlere verecek şekilde daha düşük puanlı olarak planlanmıştır.  
+- **Sprint içinde tamamlanması tahmin edilen puan:**  Geçen hafta oluşan tenik aksaklıktan ötürü bir backlog görevi yerine getirlememişti, o görevin Sprint 3'e aktarılmasıyla yapılması gereken görevlerin toplam puan değeri 70'ten 78'e çıkmıştır. Tahmin edilen puan değerine ulaşılmıştır.
+- **Puan tamamlama mantığı:**
+- Tüm görevlerin puanı öncelik olarak yapılması gereken öncelik hiyerarşisine göre genel bir puanlandırılma yapılmıştır, o nedenle en yüksek puan geçen hafta bitmesi gereken görevdedir. 
+- Proje boyunca tamamlanması gereken toplam 200 puanlık backlog bulunmaktadır. Puanlar üç sprinte bölünüp sprint puanları 60-70-70 olacak şekilde belirlenmiştir. İlk sprint, sınav haftası vb. durumlar düşünülerek ağırlığı diğer sprintlere verecek şekilde daha düşük puanlı olarak planlanmıştır.  
 - **Backlog düzeni ve Story seçimleri:** Backlog’umuz bir sonraki sprintlerin temelini atacak şekilde düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde görevler dağıtılmıştır. Miro Board’da görünen pembe etiketler sanat, mavi etiketler organizasyon, yeşil etiketler yazılım, mor etiketler ise tasarımı temsil etmektedir.  
 - **Daily Scrum:** Daily Scrum toplantılarımız Slack üzerinden sesli, WhatsApp üzerinden ise yazılı olarak yapılmakta ve takibi sağlanmaktadır. Raporlar Notion üzerinde tutulmaktadır.  
   👉 [Daily Scrum Bağlantısı](https://www.notion.so/22547d99163980b2b721f96411cd3c6f?v=22547d99163980a6a12c000ca6ba9577&source=copy_link)  
@@ -189,12 +197,11 @@ Ahmet Emir Coşkun, Hazal Türkmen, Kübra Korkmaz, Mina Güneyhan, Selçuk Seym
 **Sprint board screenshot:**  
 *(İlk ekran görüntüsü sürecin devam ettiği andan, ikinci ekran görüntüsü sprint sonunda alınmıştır)*  
 <p align="center">
-  eklenecek
-  <img src="" alt=""/>
+  <img src="https://i.imghippo.com/files/jLo1585dIQ.png"/>
 </p>
 <p align="center">
   eklenecek
-  <img src=""/>
+  <img src="https://i.imghippo.com/files/X6845QQ.png"/>
 </p>
 
 ---
